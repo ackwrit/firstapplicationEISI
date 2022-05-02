@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "204191613685",
+    "project_id": "firstapplicationeisiawt",
+    "storage_bucket": "firstapplicationeisiawt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204191613685:android:ef9451637c3451001dbbbc",
+        "android_client_info": {
+          "package_name": "com.example.firstapplicationeisi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204191613685-igee78un8v7alp2nuirq4ioobnp6ile1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqTOIHNWjXuNMGi18Y8pgdcNaArsTVyVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204191613685-igee78un8v7alp2nuirq4ioobnp6ile1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
