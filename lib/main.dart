@@ -1,3 +1,4 @@
+import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/View/Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -185,12 +186,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 ElevatedButton(
                     onPressed:(){
 
-                      Navigator.push(context,MaterialPageRoute(
-                          builder : (context){
-                            //return Dashboard(mail : mail,password : password);
-                            return Dashboard();
-                          }
-                      ));
+                      FirestoreHelper().Inscription(prenom, nom, mail, password).then((value){
+                        Navigator.push(context,MaterialPageRoute(
+                            builder : (context){
+                              //return Dashboard(mail : mail,password : password);
+                              return Dashboard();
+                            }
+                        ));
+                      }).catchError((error){
+                        print(error);
+                      });
+
+
                     },
                     child : const Text("Validation")
 
