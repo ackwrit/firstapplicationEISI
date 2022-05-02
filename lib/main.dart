@@ -32,13 +32,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //Variables
   String mail = "";
   String password = "";
   String prenom ="";
   String nom = "";
+  List<bool> selections = [true,false];
 
   @override
   Widget build(BuildContext context) {
+
+
+
 
 
     return Scaffold(
@@ -64,9 +69,34 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget bodyPage(){
     return  Column(
         children : [
+          ToggleButtons(
+              children: const  [
+                 Text("Inscription"),
+                Text("Connexion")
+              ],
+              isSelected: selections,
+            selectedColor: Colors.red,
+
+            borderRadius: BorderRadius.circular(10),
+            disabledColor: Colors.white,
+           
+            onPressed: (int selected){
+                setState(() {
+                  selections[selected] = true;
+                  if(selected == 0){
+                    selections[1] = false;
+                  }
+                  else
+                    {
+                      selections[0] = false;
+                    }
+                });
+            },
+          ),
+          const SizedBox(height : 40),
 
           //Prénom
-          TextField(
+          (selections[0])?TextField(
               decoration : InputDecoration(
                   hintText:"Entrer votre prénom",
                   border : OutlineInputBorder(
@@ -78,14 +108,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   prenom = texte;
                 });
               }
-          ),
+          ):Container(),
 
           const SizedBox(height : 40),
 
 
           // Nom
 
-          TextField(
+          (selections[0])?TextField(
               decoration : InputDecoration(
                   hintText:"Entrer votre nom",
                   border : OutlineInputBorder(
@@ -97,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   nom = texte;
                 });
               }
-          ),
+          ):Container(),
 
           const SizedBox(height : 40),
 
@@ -156,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           }
                       ));
                     },
-                    child : const Text("Connexion")
+                    child : const Text("Validation")
 
                 ),
                 const SizedBox(width : 10),
