@@ -1,5 +1,6 @@
 import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/View/Dashboard.dart';
+import 'package:firstapplicationeisi/model/MyProfil.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -185,17 +186,36 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 ElevatedButton(
                     onPressed:(){
+                      if(selections[0]){
+                        FirestoreHelper().Inscription(prenom, nom, mail, password).then((value){
+                          Navigator.push(context,MaterialPageRoute(
+                              builder : (context){
+                                //return Dashboard(mail : mail,password : password);
+                                return Dashboard();
+                              }
+                          ));
+                        }).catchError((error){
+                          print(error);
+                        });
+                      }
+                      else
+                        {
+                          FirestoreHelper().Connexion(mail, password).then((value){
+                            setState(() {
+                              MyProfil Profil = value;
+                              Navigator.push(context,MaterialPageRoute(
+                                  builder : (context){
+                                    //return Dashboard(mail : mail,password : password);
+                                    return Dashboard();
+                                  }
+                              ));
+                            });
+                          }).catchError((error){
+                            print(error);
+                          });
+                        }
 
-                      FirestoreHelper().Inscription(prenom, nom, mail, password).then((value){
-                        Navigator.push(context,MaterialPageRoute(
-                            builder : (context){
-                              //return Dashboard(mail : mail,password : password);
-                              return Dashboard();
-                            }
-                        ));
-                      }).catchError((error){
-                        print(error);
-                      });
+
 
 
                     },

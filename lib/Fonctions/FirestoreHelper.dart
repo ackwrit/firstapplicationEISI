@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firstapplicationeisi/model/MyProfil.dart';
 
 class FirestoreHelper {
   //Attributs
@@ -28,8 +29,11 @@ class FirestoreHelper {
 
 
   //Fonction pour se conneter
-  Future Connexion(String mail , String password) async{
+  Future <MyProfil> Connexion(String mail , String password) async{
     UserCredential result = await auth.signInWithEmailAndPassword(email: mail, password: password);
+    String uid = result.user!.uid;
+    DocumentSnapshot snapshot = await fireUser.doc(uid).get();
+    return MyProfil(snapshot);
 
   }
 
