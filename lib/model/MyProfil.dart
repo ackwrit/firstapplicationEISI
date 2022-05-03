@@ -26,8 +26,8 @@ class MyProfil{
     prenom = map["PRENOM"];
     image = map["IMAGE"];
     mail = map["MAIL"];
-    Timestamp timpestamp = map["NAISSANCE"];
-    dateNaissance = timpestamp.toDate();
+    Timestamp? timpestamp = map["NAISSANCE"];
+    dateNaissance = timpestamp?.toDate();
 
   }
 

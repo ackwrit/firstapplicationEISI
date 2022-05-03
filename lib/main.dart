@@ -186,7 +186,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 ElevatedButton(
                     onPressed:(){
-                      if(selections[0]){
+
+                      if(selections[0] == true){
                         FirestoreHelper().Inscription(prenom, nom, mail, password).then((value){
                           Navigator.push(context,MaterialPageRoute(
                               builder : (context){
@@ -195,6 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               }
                           ));
                         }).catchError((error){
+
                           print(error);
                         });
                       }
@@ -202,6 +204,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         {
                           FirestoreHelper().Connexion(mail, password).then((value){
                             setState(() {
+
+
                               MyProfil Profil = value;
                               Navigator.push(context,MaterialPageRoute(
                                   builder : (context){
@@ -214,11 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             print(error);
                           });
                         }
-
-
-
-
-                    },
+                      },
                     child : const Text("Validation")
 
                 ),

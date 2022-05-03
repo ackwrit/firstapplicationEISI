@@ -21,7 +21,8 @@ class FirestoreHelper {
     String uid = result.user!.uid;
     Map<String,dynamic> map = {
       "PRENOM" : prenom,
-      "NOM" : nom
+      "NOM" : nom,
+      "MAIL": mail,
     };
     addUser(uid, map);
 
@@ -29,12 +30,11 @@ class FirestoreHelper {
 
 
   //Fonction pour se conneter
-  Future <MyProfil> Connexion(String mail , String password) async{
+  Future <MyProfil> Connexion( String mail , String password) async {
     UserCredential result = await auth.signInWithEmailAndPassword(email: mail, password: password);
     String uid = result.user!.uid;
     DocumentSnapshot snapshot = await fireUser.doc(uid).get();
     return MyProfil(snapshot);
-
   }
 
 
