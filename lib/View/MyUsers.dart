@@ -68,12 +68,21 @@ class MyUsersState extends State<MyUsers>{
                 ElevatedButton(
                     onPressed: (){
                       //Stocker mon image dans la base de donnée
-                      FirestoreHelper().stockageImage(nameImage!, bytesImages!);
+                      FirestoreHelper().stockageImage(nameImage!, bytesImages!).then((value){
+                        setState(() {
+                          lienImage = value;
+                          Myprofil.image = value;
+                          Map<String,dynamic> map ={
+                            "IMAGE": lienImage,
+                          };
+                          FirestoreHelper().updateUser(Myprofil.uid, map);
+                          Navigator.pop(context);
 
 
-                      //Récuperer le lien dans la base de donnée
 
-                      Navigator.pop(context);
+                        });
+                      });
+
 
                     },
                     child: const Text("Ok")
@@ -84,6 +93,34 @@ class MyUsersState extends State<MyUsers>{
           else
             {
               return AlertDialog(
+                  title: const Text("Souhaitez- vous avoir cette photo de profil?"),
+                  content : Image.memory(bytesImages!),
+                  actions : [
+                    ElevatedButton(
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                        child: const Text("Annuler")
+                    ),
+                    ElevatedButton(
+                        onPressed: (){
+                          //Stocker mon image dans la base de donnée
+                          FirestoreHelper().stockageImage(nameImage!, bytesImages!).then((value){
+                            setState(() {
+                              lienImage = value;
+                              Myprofil.image = value;
+                            });
+                          });
+                          Map<String,dynamic> map ={
+                            "IMAGE": lienImage,
+                          };
+                          FirestoreHelper().updateUser(Myprofil.uid, map);
+                          Navigator.pop(context);
+
+                        },
+                        child: const Text("Ok")
+                    ),
+                  ]
 
               );
             }

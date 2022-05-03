@@ -1,5 +1,7 @@
+import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/View/AllUsers.dart';
 import 'package:firstapplicationeisi/View/MyUsers.dart';
+import 'package:firstapplicationeisi/main.dart';
 import 'package:flutter/material.dart';
 class Dashboard extends StatefulWidget {
 
@@ -15,7 +17,22 @@ class DashboardState extends State<Dashboard>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-        appBar : AppBar(title : const Text("Mon DashBoard")
+
+        appBar : AppBar(
+            title : const Text("Mon DashBoard"),
+          actions: [
+            IconButton(onPressed: (){
+              FirestoreHelper().deconnexion();
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context){
+                    return const MyHomePage(title: "");
+                  }
+              ));
+
+            },
+                icon: const Icon(Icons.exit_to_app ,color: Colors.red,)
+            )
+          ],
         ),
         body : bodyPage(),
       bottomNavigationBar: BottomNavigationBar(

@@ -53,6 +53,11 @@ class FirestoreHelper {
   }
 
 
+  deconnexion(){
+    auth.signOut();
+  }
+
+
   //Stocker image
   Future <String> stockageImage(String nameImage,Uint8List data) async{
     String urlChemin = "";
