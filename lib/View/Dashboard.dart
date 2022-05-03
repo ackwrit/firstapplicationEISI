@@ -1,4 +1,5 @@
 import 'package:firstapplicationeisi/View/AllUsers.dart';
+import 'package:firstapplicationeisi/View/MyUsers.dart';
 import 'package:flutter/material.dart';
 class Dashboard extends StatefulWidget {
 
@@ -51,7 +52,7 @@ class DashboardState extends State<Dashboard>{
         AllUsers(),
 
         //Créer une page de profil
-        Text("mon Profil"),
+        MyUsers()
 
       ],
       controller: controller,
