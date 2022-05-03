@@ -1,3 +1,4 @@
+import 'package:firstapplicationeisi/View/AllUsers.dart';
 import 'package:flutter/material.dart';
 class Dashboard extends StatefulWidget {
 
@@ -47,7 +48,7 @@ class DashboardState extends State<Dashboard>{
       },
       children: [
         //Afficher tous les utilisateurs
-        Text("Tous les utilisateurs"),
+        AllUsers(),
 
         //Créer une page de profil
         Text("mon Profil"),
