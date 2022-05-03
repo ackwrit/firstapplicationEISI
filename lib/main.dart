@@ -3,6 +3,7 @@ import 'package:firstapplicationeisi/View/Dashboard.dart';
 import 'package:firstapplicationeisi/model/MyProfil.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'library/lib.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -206,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             setState(() {
 
 
-                              MyProfil Profil = value;
+                              Myprofil = value;
                               Navigator.push(context,MaterialPageRoute(
                                   builder : (context){
                                     //return Dashboard(mail : mail,password : password);
