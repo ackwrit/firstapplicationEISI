@@ -1,6 +1,7 @@
+import 'dart:io';
+
 import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/View/Dashboard.dart';
-import 'package:firstapplicationeisi/model/MyProfil.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'library/lib.dart';

@@ -1,5 +1,7 @@
 
 
+import 'dart:typed_data';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -48,6 +50,18 @@ class FirestoreHelper {
   //Mettre à jour l'utilisateur
   updateUser(String uid , Map<String,dynamic> map){
     fireUser.doc(uid).update(map);
+  }
+
+
+  //Stocker image
+  Future <String> stockageImage(String nameImage,Uint8List data) async{
+    String urlChemin = "";
+    //Stocker l'image
+    TaskSnapshot download = await storage.ref("image/$nameImage").putData(data);
+    //Récupper le lien de l'image
+    urlChemin = await download.ref.getDownloadURL();
+    return urlChemin;
+
   }
 
 }
